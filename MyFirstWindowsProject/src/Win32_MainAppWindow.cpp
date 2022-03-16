@@ -2,6 +2,7 @@
 
 LRESULT CALLBACK WindowProc(HWND Window, UINT Message, WPARAM WParam, LPARAM LParam);
 
+
 INT WINAPI WinMain(HINSTANCE Instance, HINSTANCE PrevInstance, PSTR CMD, INT IsVisible)
 {
 

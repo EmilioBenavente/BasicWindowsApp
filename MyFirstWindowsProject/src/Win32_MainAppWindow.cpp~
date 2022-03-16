@@ -1,0 +1,55 @@
+#include <windows.h>
+
+LRESULT CALLBACK WindowProc(HWND Window, UINT Message, WPARAM WParam, LPARAM LParam);
+
+INT WINAPI WinMain(HINSTANCE Instance, HINSTANCE PrevInstance, PSTR CMD, INT IsVisible)
+{
+  //@NOTE(Emilio): Registers the Window Class.
+  const char* W_NAME = "My Window\0";
+
+  WNDCLASS WindowClass = {};
+  WindowClass.lpfnWndProc = WindowProc;
+  WindowClass.hInstance = Instance;
+  WindowClass.lpszClassName = W_NAME;
+
+  RegisterClassA(W_NAME);
+
+  //@NOTE(Emilio): Creating the Window
+  HWND Window = CreateWindowExA(0, W_NAME, "Learning to Program Window!", WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, 0, 0, Instance, 0);
+
+  if(!Window)
+    {
+      return 0;
+    }
+
+  ShowWindow(Window, IsVisible);
+
+  MSG Message = {};
+  while(GetMessage(&Message, 0,0,0))
+    {
+      TranslateMessage(&Message);
+      DispatchMessage(&Message);
+    }
+
+  return 0;
+}
+
+
+LRESULT CALLBACK WindowProc(HWND Window, UINT Message, WPARAM WParam, LPARAM LParam)
+{
+  switch(Message)
+    {
+    case WM_DESTROY:
+      PostQuitMessage(0);
+      return 0;
+    case WM_PAINT:
+      {
+        PAINTSTRUCT Paint;
+        HDC hdc = BeginPaint(Window, &Paint);
+        FillRect(hdc, &Paint.rcPaint, (HBRUSH) (COLOR_WINDOW + 1));
+        EndPaint(Window, &Paint);
+      }
+      return 0;
+    }
+  return DefWindowProc(Window, Message, WParam, LParam);
+}

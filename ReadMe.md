@@ -11,3 +11,10 @@
 2. A couple of hours has passed and I have switched computers, thus I have updated via 2nd commit a way
    for the github to recognize Emacs anywhere as long as you use "subst z:  Path/To/Emacs/Folder"
    It must be the folder since the path looks in the bin section!!
+
+3. A few more hours has passed and it appears that right now it is impossible for me to avoid Visual
+   Studio's IDE. Not for practical reasons but for debugging reasons. If I want this project to be as
+   bare metal as possible I must try my hardest to avoid <stdio.h>. This means avoiding _sprintf_.
+   I am also not allowed to use _OutputDebugStringA_ without invoking the Visual Studio IDE since the
+   program looks for _IsDebuggerPresent_ in order to call _OutputDebugStringA_.
+

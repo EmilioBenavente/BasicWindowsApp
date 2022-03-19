@@ -1,2 +1,0 @@
-@echo off
-"C:\Users\thesp\Desktop\emacs-27.2-x86_64\bin\emacs-27.2.exe" -q -l "m:\MyFirstWindowsProject\misc\.emacs

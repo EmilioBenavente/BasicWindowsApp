@@ -2,7 +2,7 @@
 
 set CommonCompilerFlags=-nologo -Zi
 
-set CommonLinkerFlags=-opt:ref user32.lib gdi32.lib winmm.lib
+set CommonLinkerFlags=-opt:ref user32.lib gdi32.lib winmm.lib Ole32.lib
 
 REM TODO - can we just build both with one exe?
 
